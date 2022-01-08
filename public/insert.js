@@ -73,6 +73,7 @@ addbtn.addEventListener("click", () => {
     fetch("api/expense", {
             headers: { "Content-Type": "application/json; charset=utf-8" },
             method: "POST",
+            mode: "no-cors",
             body: JSON.stringify({
                 title: title.value,
                 amount: amount.value
@@ -96,6 +97,7 @@ updatebtn.addEventListener("click", () => {
     fetch("api/total", {
             headers: { "Content-Type": "application/json; charset=utf-8" },
             method: "POST",
+            mode: "no-cors",
             body: JSON.stringify({
                 totalAmount: total.value
             })
