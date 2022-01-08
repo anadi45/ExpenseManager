@@ -44,7 +44,7 @@ function refreshBudget(budget) {
 }
 
 //Api call for getting expenses from database
-fetch("https://anadi45-expense-manager.herokuapp.com/api/expense", {
+fetch("/api/expense", {
         mode: "no-cors"
     })
     .then((response) => {
@@ -58,7 +58,7 @@ fetch("https://anadi45-expense-manager.herokuapp.com/api/expense", {
     });
 
 //Api call for getting budget(total)
-fetch("https://anadi45-expense-manager.herokuapp.com/api/total", {
+fetch("/api/total", {
         mode: "no-cors"
     })
     .then((response) => {
@@ -74,7 +74,7 @@ fetch("https://anadi45-expense-manager.herokuapp.com/api/total", {
 //Saving individual expense to database
 addbtn.addEventListener("click", () => {
 
-    fetch("https://anadi45-expense-manager.herokuapp.com/api/expense", {
+    fetch("/api/expense", {
             headers: { "Content-Type": "application/json; charset=utf-8" },
             method: "POST",
             mode: "no-cors",
@@ -98,7 +98,7 @@ addbtn.addEventListener("click", () => {
 //Saving budget to database
 updatebtn.addEventListener("click", () => {
 
-    fetch("https://anadi45-expense-manager.herokuapp.com/api/total", {
+    fetch("/api/total", {
             headers: { "Content-Type": "application/json; charset=utf-8" },
             method: "POST",
             mode: "no-cors",
