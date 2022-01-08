@@ -44,7 +44,9 @@ function refreshBudget(budget) {
 }
 
 //Api call for getting expenses from database
-fetch("https://anadi45-expense-manager.herokuapp.com/api/expense")
+fetch("https://anadi45-expense-manager.herokuapp.com/api/expense", {
+        mode: "no-cors"
+    })
     .then((response) => {
         return response.json();
     })
@@ -56,7 +58,9 @@ fetch("https://anadi45-expense-manager.herokuapp.com/api/expense")
     });
 
 //Api call for getting budget(total)
-fetch("https://anadi45-expense-manager.herokuapp.com/api/total")
+fetch("https://anadi45-expense-manager.herokuapp.com/api/total", {
+        mode: "no-cors"
+    })
     .then((response) => {
         return response.json();
     })
