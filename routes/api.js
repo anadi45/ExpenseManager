@@ -2,7 +2,7 @@ const route = require("express").Router();
 const Expense = require("../db").Expense;
 const Total = require("../db").Total;
 
-//Returning expense data ffrom database
+//Returning expense data from database
 route.get("/expense", (req, res) => {
     Expense.find({}, (err, expenses) => {
         if (err) {
