@@ -44,9 +44,7 @@ function refreshBudget(budget) {
 }
 
 //Api call for getting expenses from database
-fetch("/api/expense", {
-        mode: "no-cors"
-    })
+fetch("/api/expense")
     .then((response) => {
         return response.json();
     })
@@ -58,9 +56,7 @@ fetch("/api/expense", {
     });
 
 //Api call for getting budget(total)
-fetch("/api/total", {
-        mode: "no-cors"
-    })
+fetch("/api/total")
     .then((response) => {
         return response.json();
     })
@@ -77,7 +73,6 @@ addbtn.addEventListener("click", () => {
     fetch("/api/expense", {
             headers: { "Content-Type": "application/json; charset=utf-8" },
             method: "POST",
-            mode: "no-cors",
             body: JSON.stringify({
                 title: title.value,
                 amount: amount.value
@@ -101,7 +96,6 @@ updatebtn.addEventListener("click", () => {
     fetch("/api/total", {
             headers: { "Content-Type": "application/json; charset=utf-8" },
             method: "POST",
-            mode: "no-cors",
             body: JSON.stringify({
                 totalAmount: total.value
             })
