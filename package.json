@@ -1,0 +1,20 @@
+{
+    "name": "expense-manager",
+    "version": "1.0.0",
+    "description": "Manage your expenses in smarter ways.",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "anadi45",
+    "license": "ISC",
+    "engines": {
+        "node": "14.15.4"
+    },
+    "dependencies": {
+        "dotenv": "^10.0.0",
+        "express": "^4.17.2",
+        "mongoose": "^6.1.5"
+    }
+}

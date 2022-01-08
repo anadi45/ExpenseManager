@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Exo', sans-serif;
+}
+
+#fbox {
+    display: flex;
+}
+
+.container {
+    max-width: 50%;
+    display: inline
+}
+
+.input {
+    width: 400px;
+    display: block;
+    margin: 20px 30px;
+}
+
+.label {
+    margin: 20px 30px;
+    padding-top: 20px;
+    font-size: 30px;
+}
+
+.button {
+    position: relative;
+    margin-left: 327px;
+    width: 100px;
+}
+
+#list {
+    background-color: #48c78e;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    font-size: 30px;
+}
+
+td {
+    padding: 5px 10px;
+    padding-bottom: 5px;
+}
+
+th {
+    padding-top: 20px;
+    padding-right: 10px;
+}
+
+tbody {
+    text-align: right;
+}
+
+.table-button {
+    margin: 14px 0px 0px 0px;
+}
+
+.footer {
+    height: 50px;
+}
