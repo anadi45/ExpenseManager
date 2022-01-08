@@ -1,7 +1,13 @@
 const mongoose = require("mongoose");
 const database = process.env.DB;
 const password = process.env.PASSWORD;
-mongoose.connect(`mongodb+srv://anadi45:${password}@cluster0.klhde.mongodb.net/${database}?retryWrites=true&w=majority`, { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(`mongodb+srv://anadi45:${password}@cluster0.klhde.mongodb.net/${database}?retryWrites=true&w=majority`, { useUnifiedTopology: true, useNewUrlParser: true })
+    .then(() => {
+        console.log("Database connected")
+    })
+    .catch((err) => {
+        console.error(err);
+    })
 
 const expenseSchema = new mongoose.Schema({
     title: {
