@@ -10,6 +10,6 @@ app.use("/", express.static(path.join(__dirname, "public")));
 
 app.use("/api", require("./routes/api").route);
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log(`http://localhost:${port}`);
 });
