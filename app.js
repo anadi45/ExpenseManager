@@ -8,6 +8,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/", express.static(path.join(__dirname, "public")));
 
+app.use("/home", (req, res) => {
+    res.sendFile(path.join(__dirname, "public/static/home.html"))
+});
+
 app.use("/api", require("./routes/api").route);
 
 app.listen(port, () => {
