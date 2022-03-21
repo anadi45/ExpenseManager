@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 import User from "../models/user";
+const jwtSecret = process.env.JWT_SECRET;
 
 
 const signup = async(req, res) => {
@@ -54,10 +55,54 @@ const signup = async(req, res) => {
             });
         }
     } catch (error) {
-
+        console.error(error);
     }
 }
 
+const login = async(req, res) => {
+    try {
+        const { loginCred, password } = req.body;
+
+        if (!loginCred || !password) {
+            return res.status(400).send({
+                message: "Fill all details"
+            });
+        }
+
+        const findUser = await User.findOne({ $or: [{ email: loginCred }, { phone: loginCred }] });
+
+        if (findUser) {
+            const match = await bcrypt.compare(password, findUser.password);
+
+            if (match) {
+                let token = jwt.sign({ _id: findUser._id }, jwtSecret);
+                let tokens = findUser.tokens;
+                tokens.append({ token: token });
+                findUser.tokens = tokens;
+                const saveToken = await findUser.save();
+                if (saveToken) {
+
+                    localStorage.setItem("jwtoken", token);
+                    return res.status(200).send({
+                        message: "Login successfully"
+                    });
+                } else {
+                    return res.status().send({
+                        message: "Error"
+                    });
+                }
+            } else {
+                return res.status(400).send({
+                    message: "Invalid credentials"
+                });
+            }
+
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
 exports = module.exports = {
-    signup
+    signup,
+    login
 }
