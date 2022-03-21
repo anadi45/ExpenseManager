@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const port = process.env.PORT || 3000;
 const app = express();
+const connectDB = require("./config/db");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,6 +15,12 @@ app.use("/home", (req, res) => {
 
 app.use("/api", require("./routes/api").route);
 
-app.listen(port, () => {
-    console.log(`http://localhost:${port}`);
-});
+
+const serverStart = async(port) => {
+    await connectDB();
+    app.listen(port, () => {
+        console.log(`http://localhost:${port}`);
+    })
+}
+
+serverStart(port);
