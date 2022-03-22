@@ -1,5 +1,9 @@
 const Budget = require("../models/budget");
 
+//@route    POST /setbudget
+//@descr    Set budget for an user
+//@access   Private
+
 const setBudget = async(req, res) => {
     try {
         const { budget } = req.body;
