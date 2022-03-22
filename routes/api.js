@@ -1,7 +1,6 @@
 const route = require("express").Router();
 const Expense = require("../db").Expense;
 const Total = require("../db").Total;
-const path = require("path")
 
 //Returning expense data from database
 route.get("/expense", (req, res) => {

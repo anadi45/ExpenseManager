@@ -1,7 +1,8 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-import User from "../models/user";
+const User = require("../models/user");
 const jwtSecret = process.env.JWT_SECRET;
+const jwt = require("jsonwebtoken");
 
 
 const signup = async(req, res) => {
@@ -28,32 +29,29 @@ const signup = async(req, res) => {
             });
         }
 
-        let hashedPassword;
-        bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
+        bcrypt.hash(password, saltRounds, async function(err, hash) {
             if (err) {
                 console.error("Password unable to be hashed");
             } else {
-                hashedPassword = hash;
+                const newUser = new User({
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    password: hash
+                });
+                const signedUp = await newUser.save();
+
+                if (signedUp) {
+                    return res.status(201).send({
+                        message: "User successfully signed up",
+                    });
+                } else {
+                    return res.status(406).send({
+                        message: "Sign up failed"
+                    });
+                }
             }
         });
-
-        const newUser = new User({
-            name: name,
-            email: email,
-            phone: phone,
-            password: hashedPassword
-        });
-        const signedUp = await newUser.save();
-
-        if (signedUp) {
-            return res.status(201).send({
-                message: "User successfully signed up",
-            });
-        } else {
-            return res.status().send({
-                message: "Sign up failed"
-            });
-        }
     } catch (error) {
         console.error(error);
     }
@@ -77,17 +75,17 @@ const login = async(req, res) => {
             if (match) {
                 let token = jwt.sign({ _id: findUser._id }, jwtSecret);
                 let tokens = findUser.tokens;
-                tokens.append({ token: token });
+                tokens.push({ token: token });
                 findUser.tokens = tokens;
                 const saveToken = await findUser.save();
                 if (saveToken) {
 
-                    localStorage.setItem("jwtoken", token);
+                    res.cookie("jwtoken", token);
                     return res.status(200).send({
                         message: "Login successfully"
                     });
                 } else {
-                    return res.status().send({
+                    return res.status(406).send({
                         message: "Error"
                     });
                 }
@@ -96,8 +94,12 @@ const login = async(req, res) => {
                     message: "Invalid credentials"
                 });
             }
-
+        } else {
+            return res.status(400).send({
+                message: "Invalid credentials"
+            });
         }
+
     } catch (error) {
         console.error(error);
     }

@@ -7,14 +7,17 @@ const connectDB = require("./config/db");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/", express.static(path.join(__dirname, "public")));
 
-app.use("/home", (req, res) => {
-    res.sendFile(path.join(__dirname, "public/static/home.html"))
-});
+app.use("/", express.static(path.join(__dirname, "public")));
+app.use("/home", express.static(path.join(__dirname, "public/static/home.html")));
 
 app.use("/api", require("./routes/api").route);
 
+// import userRoute from "./routes/userRoute";
+const userRoute = require("./routes/userRoute")
+
+
+app.use("/api/v1/users", userRoute);
 
 const serverStart = async(port) => {
     await connectDB();
