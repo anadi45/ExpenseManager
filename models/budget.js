@@ -6,7 +6,8 @@ const budgetSchema = new mongoose.Schema({
         ref: 'User'
     },
     totalBudget: {
-        type: Number
+        type: Number,
+        default: 0
     }
 });
 

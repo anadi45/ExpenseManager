@@ -46,7 +46,7 @@ const createExpense = async(req, res) => {
         const saved = await newExpense.save();
 
         if (saved) {
-            return res.status(200).send({
+            return res.status(201).send({
                 message: "Expense saved successfully"
             });
         } else {

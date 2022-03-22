@@ -14,10 +14,12 @@ app.use("/home", express.static(path.join(__dirname, "public/static/home.html"))
 
 const userRoute = require("./routes/userRoute");
 const expenseRoute = require("./routes/expenseRoute");
+const budgetRoute = require("./routes/budgetRoute");
 
 
-app.use("/api/v1/users", userRoute);
-app.use("/api/v1/expenses", expenseRoute);
+app.use("/api/v1/user", userRoute);
+app.use("/api/v1/expense", expenseRoute);
+app.use("/api/v1/budget", budgetRoute);
 
 const serverStart = async(port) => {
     await connectDB();
