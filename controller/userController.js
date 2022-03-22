@@ -4,6 +4,9 @@ const User = require("../models/user");
 const jwtSecret = process.env.JWT_SECRET;
 const jwt = require("jsonwebtoken");
 
+//@route    POST /signup
+//@descr    Signup an user
+//access    Public
 
 const signup = async(req, res) => {
     try {
@@ -16,15 +19,17 @@ const signup = async(req, res) => {
         }
 
         const findEmail = await User.findOne({ email: email });
+
         if (findEmail) {
-            return res.status(406).send({
+            return res.status(400).send({
                 message: "Email already registered"
             });
         }
 
         const findPhone = await User.findOne({ phone: phone });
+
         if (findPhone) {
-            return res.status(406).send({
+            return res.status(400).send({
                 message: "Phone already registered"
             });
         }
@@ -57,6 +62,10 @@ const signup = async(req, res) => {
     }
 }
 
+//@route    POST /login
+//@descr    Login an user
+//access    Public
+
 const login = async(req, res) => {
     try {
         const { loginCred, password } = req.body;
@@ -78,8 +87,8 @@ const login = async(req, res) => {
                 tokens.push({ token: token });
                 findUser.tokens = tokens;
                 const saveToken = await findUser.save();
-                if (saveToken) {
 
+                if (saveToken) {
                     res.cookie("jwtoken", token);
                     return res.status(200).send({
                         message: "Login successfully"
@@ -99,12 +108,28 @@ const login = async(req, res) => {
                 message: "Invalid credentials"
             });
         }
-
     } catch (error) {
         console.error(error);
     }
 }
+
+//@route    GET /logout
+//@descr    Logout user
+//access    Public
+
+const logout = (req, res) => {
+    try {
+        res.clearCookie("jwtoken", { path: "/" });
+        return res.status(200).send({
+            message: "User logged out"
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 exports = module.exports = {
     signup,
-    login
+    login,
+    logout
 }

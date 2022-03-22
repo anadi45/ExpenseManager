@@ -1,8 +1,8 @@
-import { Schema, model } from "mongoose";
+const mongoose = require("mongoose");
 
-const expenseSchema = new Schema({
+const expenseSchema = new mongoose.Schema({
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
     title: {
@@ -19,6 +19,6 @@ const expenseSchema = new Schema({
     }
 });
 
-const Expense = new model("Expense", expenseSchema);
+const Expense = new mongoose.model("Expense", expenseSchema);
 
 exports = module.exports = Expense;

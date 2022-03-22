@@ -1,12 +1,9 @@
 const route = require("Express").Router();
 
-const { signup, login } = require("../controller/userController");
+const { signup, login, logout } = require("../controller/userController");
 
 route.post("/signup", signup);
 route.post("/login", login);
-route.get("/check", (req, res) => {
-    res.send("ok")
-})
-
+route.get("/logout", logout);
 
 exports = module.exports = route;

@@ -11,13 +11,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", express.static(path.join(__dirname, "public")));
 app.use("/home", express.static(path.join(__dirname, "public/static/home.html")));
 
-app.use("/api", require("./routes/api").route);
 
-// import userRoute from "./routes/userRoute";
-const userRoute = require("./routes/userRoute")
+const userRoute = require("./routes/userRoute");
+const expenseRoute = require("./routes/expenseRoute");
 
 
 app.use("/api/v1/users", userRoute);
+app.use("/api/v1/expenses", expenseRoute);
 
 const serverStart = async(port) => {
     await connectDB();

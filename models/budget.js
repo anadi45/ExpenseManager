@@ -1,8 +1,8 @@
-import { Schema, model } from "mongoose";
+const mongoose = require("mongoose");
 
-const budgetSchema = new Schema({
+const budgetSchema = new mongoose.Schema({
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
     totalBudget: {
@@ -10,6 +10,6 @@ const budgetSchema = new Schema({
     }
 });
 
-const Budget = new model("Budget", budgetSchema);
+const Budget = new mongoose.model("Budget", budgetSchema);
 
 exports = module.exports = Budget;
