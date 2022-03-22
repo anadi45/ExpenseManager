@@ -1,6 +1,6 @@
 const Budget = require("../models/budget");
 
-const setBudget = (req, res) => {
+const setBudget = async(req, res) => {
     try {
         const { budget } = req.body;
         const id = req.rootuser._id;
