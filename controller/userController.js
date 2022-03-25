@@ -89,10 +89,11 @@ const login = async(req, res) => {
                 const saveToken = await findUser.save();
 
                 if (saveToken) {
-                    res.cookie("jwtoken", token);
-                    return res.status(201).send({
-                        message: "Login successfully"
-                    });
+                    return res.cookie("jwtoken", token, {
+                        httpOnly: true,
+                        sameSite: 'none',
+                        secure: true
+                    }).status(201).send({ token });
                 } else {
                     return res.status(406).send({
                         message: "Error"
