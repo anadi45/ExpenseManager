@@ -12,7 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({ credentials: true, origin: true }));
 app.use("/", express.static(path.join(__dirname, "public")));
-app.use("/home", express.static(path.join(__dirname, "public/static/home.html")));
+
+app.use("/login", express.static(path.join(__dirname, "/public/login.html")));
 
 
 const userRoute = require("./routes/userRoute");

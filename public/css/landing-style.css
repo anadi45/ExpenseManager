@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Exo', sans-serif;
+}
+
+body {
+    background-color: #3684f8;
+}
+
+.logo-green {
+    color: #4be8ae;
+}
+
+.logo-blue {
+    color: #3684f8;
+}
+
+.navbar-brand {
+    font-size: 30px;
+}
+
+img {
+    border-radius: 30px;
+    max-width: 100%;
+    height: auto;
+}
+
+#intro {
+    font-size: 20px;
+    color: white;
+}
+
+.footer {
+    background-color: white;
+}
+
+#footer-div {
+    padding-top: 20px;
+    height: 70px;
+}
+
+.slideshow-container {
+    position: relative;
+    background: white;
+}
+
+.mySlides {
+    display: none;
+    padding: 80px;
+    text-align: center;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -30px;
+    padding: 16px;
+    color: #3684f8;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: white;
+}
+
+.next {
+    position: absolute;
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    color: #4be8ae;
+}
+
+.dot-container {
+    text-align: center;
+    padding: 20px;
+    background: #4be8ae;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #3684f8;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease-out;
+}
+
+.active,
+.dot:hover {
+    background-color: white;
+}
+
+q {
+    font-style: italic;
+}
+
+.author {
+    color: cornflowerblue;
+}
+
+#prevButton,
+#nextButton {
+    background-color: white;
+}
+
+#loginButton,
+#signupButton {
+    background-color: white;
+}
+
+#loginButton:hover,
+#signupButton:hover {
+    background-color: #4be8ae;
+}
