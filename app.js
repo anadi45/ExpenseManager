@@ -12,9 +12,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({ credentials: true, origin: true }));
 app.use("/", express.static(path.join(__dirname, "public")));
+app.use("/login", express.static(path.join(__dirname, "public/login.html")));
+app.use("/signup", express.static(path.join(__dirname, "public/signup.html")));
+app.use("/home", express.static(path.join(__dirname, "public/home.html")));
 
-app.use("/login", express.static(path.join(__dirname, "/public/login.html")));
-
+// app.use((req, res) => {
+//     res.send("404 page not found")
+// })
 
 const userRoute = require("./routes/userRoute");
 const expenseRoute = require("./routes/expenseRoute");
