@@ -9,7 +9,7 @@ const viewBudget = async(req, res) => {
         const id = req.rootuser._id;
 
         const findBudget = await Budget.find({ user: id });
-        if (findBudget) {
+        if (findBudget && findBudget.length != 0) {
             return res.status(200).send(findBudget);
         } else {
             return res.status(406).send({
