@@ -13,8 +13,8 @@ const viewExpenses = async(req, res) => {
         if (findExpenses) {
             return res.status(200).send(findExpenses);
         } else {
-            res.status(406).send({
-                message: "Couldn't fetch expenses"
+            return res.status(406).send({
+                message: "No expense added"
             });
         }
     } catch (error) {

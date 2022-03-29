@@ -1,5 +1,26 @@
 const Budget = require("../models/budget");
 
+//route     GET /viewbudget
+//descr     View budget of an user
+//access    Private
+
+const viewBudget = async(req, res) => {
+    try {
+        const id = req.rootuser._id;
+
+        const findBudget = await Budget.find({ user: id });
+        if (findBudget) {
+            return res.status(200).send(findBudget);
+        } else {
+            return res.status(406).send({
+                message: "Budget currently not set"
+            });
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 //@route    POST /setbudget
 //@descr    Set budget for an user
 //@access   Private
@@ -55,5 +76,6 @@ const setBudget = async(req, res) => {
 }
 
 exports = module.exports = {
-    setBudget
+    setBudget,
+    viewBudget
 }
