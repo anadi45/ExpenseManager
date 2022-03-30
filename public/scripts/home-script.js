@@ -169,6 +169,22 @@ submitBudget.addEventListener("click", async() => {
     }
 });
 
+const logout = async() => {
+
+    const loggedOut = await fetch("http://localhost:3000/api/v1/user/logout", {
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "access-control-allow-origin": "*"
+        },
+        method: "GET"
+    });
+
+    if (loggedOut.status == 200) {
+        localStorage.clear();
+        window.location.href = "http://localhost:3000";
+    }
+}
+
 refreshData();
 
 

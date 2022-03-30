@@ -41,7 +41,7 @@ signupButton.addEventListener("click", async() => {
 });
 
 modalButton.addEventListener("click", () => {
-    window.location.href = "http://localhost:3000/login"
+    window.location.href = "http://localhost:3000/login";
 });
 
 closeModal.onclick = function() {
