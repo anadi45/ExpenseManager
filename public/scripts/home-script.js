@@ -59,7 +59,7 @@ const updateBudget = (data) => {
 
 const refreshData = async() => {
 
-    const fetchExpenses = await fetch("http://localhost:3000/api/v1/expense/viewexpenses", {
+    const fetchExpenses = await fetch("/api/v1/expense/viewexpenses", {
         headers: {
             "Content-Type": "application/json; charset=utf-8",
             "access-control-allow-origin": "*",
@@ -75,7 +75,7 @@ const refreshData = async() => {
     }
 
 
-    const fetchBudget = await fetch("http://localhost:3000/api/v1/budget/viewbudget", {
+    const fetchBudget = await fetch("/api/v1/budget/viewbudget", {
         headers: {
             "Content-Type": "application/json; charset=utf-8",
             "access-control-allow-origin": "*",
@@ -93,7 +93,7 @@ const refreshData = async() => {
 
 
 const deleteExpense = async(id) => {
-    const expenseDeleted = await fetch("http://localhost:3000/api/v1/expense/deleteexpense", {
+    const expenseDeleted = await fetch("/api/v1/expense/deleteexpense", {
         headers: {
             "Content-Type": "application/json; charset=utf-8",
             "access-control-allow-origin": "*"
@@ -125,7 +125,7 @@ submitExpense.addEventListener("click", async() => {
     const inputTitle = document.querySelector("#inputTitle");
     const inputAmount = document.querySelector("#inputAmount");
 
-    const submit = await fetch("http://localhost:3000/api/v1/expense/createexpense", {
+    const submit = await fetch("/api/v1/expense/createexpense", {
         headers: {
             "Content-Type": "application/json; charset=utf-8",
             "access-control-allow-origin": "*",
@@ -150,7 +150,7 @@ submitExpense.addEventListener("click", async() => {
 submitBudget.addEventListener("click", async() => {
     const inputBudget = document.querySelector("#inputBudget");
 
-    const submit = await fetch("http://localhost:3000/api/v1/budget/setbudget", {
+    const submit = await fetch("/api/v1/budget/setbudget", {
         headers: {
             "Content-Type": "application/json; charset=utf-8",
             "access-control-allow-origin": "*",
@@ -171,7 +171,7 @@ submitBudget.addEventListener("click", async() => {
 
 const logout = async() => {
 
-    const loggedOut = await fetch("http://localhost:3000/api/v1/user/logout", {
+    const loggedOut = await fetch("/api/v1/user/logout", {
         headers: {
             "Content-Type": "application/json; charset=utf-8",
             "access-control-allow-origin": "*"

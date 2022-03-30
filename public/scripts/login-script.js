@@ -6,7 +6,7 @@ const closeModal = document.querySelectorAll(".close")[0];
 
 loginButton.addEventListener("click", async() => {
 
-    const loggedIn = await fetch("http://localhost:3000/api/v1/user/login", {
+    const loggedIn = await fetch("/api/v1/user/login", {
         headers: {
             "Content-Type": "application/json; charset=utf-8",
             "access-control-allow-origin": "*"
@@ -26,7 +26,7 @@ loginButton.addEventListener("click", async() => {
     if (loggedIn.status === 400) {
         modal.style.display = "block";
     } else if (loggedIn.status === 201) {
-        window.location.href = "http://localhost:3000/home";
+        window.location.href = "http://anadi45-expense-manager.herokuapp.com/home";
     }
 });
 

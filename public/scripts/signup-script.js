@@ -10,7 +10,7 @@ let modalResponse = document.querySelector("#modalResponse");
 const modalButton = document.querySelector("#modalButton");
 
 signupButton.addEventListener("click", async() => {
-    const signedUp = await fetch("http://localhost:3000/api/v1/user/signup", {
+    const signedUp = await fetch("/api/v1/user/signup", {
         headers: {
             "Content-Type": "application/json; charset=utf-8",
             "access-control-allow-origin": "*"
@@ -41,7 +41,7 @@ signupButton.addEventListener("click", async() => {
 });
 
 modalButton.addEventListener("click", () => {
-    window.location.href = "http://localhost:3000/login";
+    window.location.href = "http://anadi45-expense-manager.herokuapp.com/login";
 });
 
 closeModal.onclick = function() {
