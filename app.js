@@ -26,9 +26,7 @@ app.use("/api/v1/user", userRoute);
 app.use("/api/v1/expense", expenseRoute);
 app.use("/api/v1/budget", budgetRoute);
 
-app.use("*", (req, res) => {
-    res.send("404 page not found")
-});
+app.use("*", express.static(path.join(__dirname, "public/404.html")));
 
 const serverStart = async(port) => {
     await connectDB();
