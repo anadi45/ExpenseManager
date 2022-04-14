@@ -90,7 +90,7 @@ changePasswordModalButton.addEventListener("click", async() => {
     if (changed.status === 201) {
         passwordModal.style.display = "none";
         fetchData();
-        statusChanged.innerHTML = `<h3>Password changed successfully</h3>`;
+        statusChanged.innerHTML = `<h4>Password changed successfully</h4>`;
         setTimeout(() => {
             statusChanged.innerHTML = ``;
         }, 2000);
