@@ -1,8 +1,8 @@
 const Budget = require("../models/budget");
 
-//route     GET /viewbudget
-//descr     View budget of an user
-//access    Private
+//@route     GET /viewbudget
+//@descr     View budget of an user
+//@access    Private
 
 const viewBudget = async(req, res) => {
     try {

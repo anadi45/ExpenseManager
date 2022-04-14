@@ -24,7 +24,7 @@ const viewExpenses = async(req, res) => {
 
 //@route    POST /createexpense
 //@descr    Create expense for user
-//access    Private
+//@access   Private
 
 const createExpense = async(req, res) => {
     try {
@@ -59,9 +59,9 @@ const createExpense = async(req, res) => {
     }
 }
 
-//route     DELETE /deleteexpense
-//descr     Delete an expense by id
-//access    Public
+//@route     DELETE /deleteexpense
+//@descr     Delete an expense by id
+//@access    Public
 
 const deleteExpense = async(req, res) => {
     try {

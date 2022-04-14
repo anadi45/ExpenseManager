@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 
 //@route    POST /signup
 //@descr    Signup an user
-//access    Public
+//@access   Public
 
 const signup = async(req, res) => {
     try {
@@ -57,6 +57,7 @@ const signup = async(req, res) => {
                 }
             }
         });
+
     } catch (error) {
         console.error(error);
     }
@@ -64,7 +65,7 @@ const signup = async(req, res) => {
 
 //@route    POST /login
 //@descr    Login an user
-//access    Public
+//@access   Public
 
 const login = async(req, res) => {
     try {
@@ -129,8 +130,105 @@ const logout = (req, res) => {
     }
 }
 
+//@route    GET /profiledetails
+//@descr    Get all profile details for user
+//@access   Private
+
+const profileDetails = async(req, res) => {
+    try {
+        const id = req.rootuser._id;
+        const findDetails = await User.find({ _id: id }).select("-_id -password -otp -tokens -__v");
+
+        if (findDetails) {
+            return res.status(200).send(findDetails);
+        } else {
+            return res.status(201).send({
+                message: "No details found"
+            });
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//@route    PATCH /changepassword
+//@descr    Change Password
+//@access   Private
+
+const changePassword = async(req, res) => {
+    try {
+        const { newPassword } = req.body;
+
+        if (!newPassword) {
+            return res.status(400).send({
+                message: "Enter new password"
+            });
+        }
+
+        const id = req.rootuser._id;
+
+        bcrypt.hash(newPassword, saltRounds, async function(err, hash) {
+            if (err) {
+                console.error("Password unable to be hashed");
+            } else {
+
+                const changed = await User.findOneAndUpdate({ _id: id }, { password: hash });
+
+                if (changed) {
+                    return res.status(201).send({
+                        message: "Password succesfully changed"
+                    });
+                } else {
+                    return res.status(406).send({
+                        message: "Unable to change the password"
+                    });
+                }
+            }
+        });
+
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//@route    PATCH /changename
+//@descr    Change name
+//@access   Private
+
+const changeName = async(req, res) => {
+    try {
+
+        const { newName } = req.body;
+        const id = req.rootuser._id;
+
+        if (!newName) {
+            return res.status(400).send({
+                message: "Enter new name"
+            });
+        }
+
+        const changed = await User.findOneAndUpdate({ _id: id }, { name: newName });
+
+        if (changed) {
+            return res.status(201).send({
+                message: "Name succesfully changed"
+            });
+        } else {
+            return res.status(406).send({
+                message: "Unable to change the name"
+            });
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 exports = module.exports = {
     signup,
     login,
-    logout
+    logout,
+    profileDetails,
+    changePassword,
+    changeName
 }
