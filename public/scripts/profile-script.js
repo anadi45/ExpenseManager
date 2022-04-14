@@ -30,7 +30,7 @@ const fillDetails = (details) => {
 
 const fetchData = async() => {
 
-    const fetchDetails = await fetch("http://localhost:3000/api/v1/user/profiledetails", {
+    const fetchDetails = await fetch("/api/v1/user/profiledetails", {
         headers: {
             "Content-Type": "application/json; charset=utf-8",
             "access-control-allow-origin": "*",
@@ -52,7 +52,7 @@ fetchData();
 changeNameModalButton.addEventListener("click", async() => {
 
     const nameInput = document.querySelector("#nameInput");
-    const changed = await fetch("http://localhost:3000/api/v1/user/changename", {
+    const changed = await fetch("/api/v1/user/changename", {
         headers: {
             "Content-Type": "application/json; charset=utf-8",
             "access-control-allow-origin": "*",
@@ -74,7 +74,7 @@ changeNameModalButton.addEventListener("click", async() => {
 changePasswordModalButton.addEventListener("click", async() => {
 
     const passwordInput = document.querySelector("#passwordInput");
-    const changed = await fetch("http://localhost:3000/api/v1/user/changepassword", {
+    const changed = await fetch("/api/v1/user/changepassword", {
         headers: {
             "Content-Type": "application/json; charset=utf-8",
             "access-control-allow-origin": "*",
