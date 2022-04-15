@@ -5,6 +5,7 @@ const modalButton = document.querySelector("#modalButton");
 const submitButton = document.querySelector("#submitButton");
 
 submitButton.addEventListener("click", async() => {
+    modal.style.display = "block";
     const getMail = await fetch("/api/v1/user/mailpassword", {
         headers: {
             "Content-Type": "application/json; charset=utf-8",
@@ -15,7 +16,6 @@ submitButton.addEventListener("click", async() => {
             mail: inputEmail.value
         })
     });
-    modal.style.display = "block";
 });
 
 modalButton.addEventListener("click", () => {
