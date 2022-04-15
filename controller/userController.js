@@ -3,6 +3,9 @@ const saltRounds = 10;
 const User = require("../models/user");
 const jwtSecret = process.env.JWT_SECRET;
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+const mail_user = process.env.MAIL_USER;
+const mail_password = process.env.MAIL_PASSWORD;
 
 //@route    POST /signup
 //@descr    Signup an user
@@ -185,8 +188,6 @@ const changePassword = async(req, res) => {
                 }
             }
         });
-
-
     } catch (error) {
         console.log(error);
     }
@@ -224,11 +225,81 @@ const changeName = async(req, res) => {
     }
 }
 
+//@route    POST /mailpassword
+//@descr    Mail new password
+//@access   Public
+
+const mailPassword = async(req, res) => {
+    try {
+        const { mail } = req.body;
+
+        if (!mail) {
+            return res.status(400).send({
+                message: "Enter mail"
+            });
+        }
+
+        const transport = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: mail_user,
+                pass: mail_password
+            }
+        });
+
+        let chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let passwordLength = 12;
+        let password = "";
+
+        for (let i = 0; i <= passwordLength; i++) {
+            let randomNumber = Math.floor(Math.random() * chars.length);
+            password += chars.substring(randomNumber, randomNumber + 1);
+        }
+
+        bcrypt.hash(password, saltRounds, async function(err, hash) {
+            if (err) {
+                console.error("Password unable to be hashed");
+            } else {
+
+                const changed = await User.findOneAndUpdate({ email: mail }, { password: hash });
+
+                if (changed) {
+                    const options = {
+                        from: mail_user,
+                        to: mail,
+                        subject: "Expense-Manager Password Reset Request",
+                        html: `New Password for your account is ${password}`
+                    }
+
+                    transport.sendMail(options, (error, info) => {
+                        if (error) {
+                            return res.status(400).send({
+                                message: "Unable to send mail"
+                            });
+                        } else {
+                            return res.status(200).send({
+                                message: "Mail sent"
+                            });
+                        }
+                    });
+                } else {
+                    return res.status(406).send({
+                        message: "Unable to change the password"
+                    });
+                }
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 exports = module.exports = {
     signup,
     login,
     logout,
     profileDetails,
     changePassword,
-    changeName
+    changeName,
+    mailPassword
 }
