@@ -124,3 +124,7 @@ input:focus {
 label {
     margin: auto;
 }
+
+#status {
+    display: none;
+}
