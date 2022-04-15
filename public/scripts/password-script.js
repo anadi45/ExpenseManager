@@ -15,10 +15,7 @@ submitButton.addEventListener("click", async() => {
             mail: inputEmail.value
         })
     });
-
-    if (getMail.status == 200) {
-        modal.style.display = "block";
-    }
+    modal.style.display = "block";
 });
 
 modalButton.addEventListener("click", () => {
