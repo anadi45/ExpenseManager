@@ -84,6 +84,14 @@ button {
     font-size: 25px;
 }
 
+#remarksBody {
+    background-color: #4be8ae;
+}
+
+#budgetBody {
+    background-color: #4be8ae;
+}
+
 input {
     display: block;
     margin: auto;

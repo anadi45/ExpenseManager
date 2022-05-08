@@ -71,12 +71,12 @@
 
     <div class="container text-center mt-4 mb-5" id="budget-container">
         <p id="budgetHeading">Budget</p>
-        <div id="budgetBody"></div>
+        <span id="budgetBody"></span>
     </div>
 
     <div class="container text-center mt-4 mb-5" id="remarks-container">
         <h4>Remarks</h4>
-        <p id="remarksBody"></p>
+        <span id="remarksBody"></span>
     </div>
 
 
@@ -84,9 +84,9 @@
         <div class="modal-content">
             <span class="close" id="closeExpenseModal">&times;</span>
             <label for="inputTitle" class="text-center">Enter Title</label>
-            <input type="text" id="inputTitle">
+            <input type="text" id="inputTitle" autocomplete="off">
             <label for="inputAmount" class="text-center">Enter Amount</label>
-            <input type="number" id="inputAmount">
+            <input type="number" id="inputAmount" autocomplete="off">
             <button class="btn mt-3" id="submitExpense">Add</button>
         </div>
     </div>
@@ -95,7 +95,7 @@
         <div class="modal-content">
             <span class="close" id="closeBudgetModal">&times;</span>
             <label for="inputBudget" class="text-center">Enter Budget</label>
-            <input type="text" id="inputBudget">
+            <input type="text" id="inputBudget" autocomplete="off">
             <button class="btn mt-3" id="submitBudget">Set</button>
         </div>
     </div>
