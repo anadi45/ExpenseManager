@@ -60,6 +60,6 @@ const updateChart = async() => {
         expenseLabels.push(expense.title);
         expenseData.push(expense.amount);
     });
-
+    console.log(expenseLabels, expenseData)
     createChart(expenseLabels, expenseData);
 }
