@@ -1,11 +1,11 @@
 const token = window.localStorage.getItem("jwtoken");
 
-let labels = [];
-let data = [];
+let expenseLabels = [];
+let expenseData = [];
 
-const createChart = (labels, data) => {
+const createChart = (exLabels, exData) => {
     let data = {
-        labels: labels,
+        labels: exLabels,
         datasets: [{
             label: "Expenses",
             backgroundColor: "#4be8ae",
@@ -13,7 +13,7 @@ const createChart = (labels, data) => {
             borderWidth: 2,
             hoverBackgroundColor: "#3684f8",
             hoverBorderColor: "white",
-            data: data,
+            data: exData,
         }]
     };
 
@@ -57,9 +57,9 @@ const updateChart = async() => {
     const fetchedExpenses = await fetchExpenses.json();
 
     fetchedExpenses.forEach((expense) => {
-        labels.push(expense.title);
-        data.push(expense.amount);
+        expenseLabels.push(expense.title);
+        expenseData.push(expense.amount);
     });
 
-    createChart(labels, data);
+    createChart(expenseLabels, expenseData);
 }
