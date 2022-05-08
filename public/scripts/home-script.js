@@ -27,7 +27,7 @@ const updateExpenses = (data) => {
     let total = 0;
     data.forEach((expense) => {
         total += expense.amount;
-        let rowHtml = `<div class="row">
+        let rowHtml = `<hr><div class="row">
             <div class="col-sm-4">${expense.title}</div>
             <div class="col-sm-2">${expense.amount}</div>
             <div class="col-sm-2"><button id="${expense._id}" onclick="deleteExpense(id)"><i class="fa-solid fa-trash-can"></i></button></div>
