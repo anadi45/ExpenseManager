@@ -37,10 +37,6 @@ const createExpense = async(req, res) => {
             });
         }
 
-        if (!amount) {
-            amount = 0;
-        }
-
         const newExpense = new Expense({
             user: id,
             title: title,
