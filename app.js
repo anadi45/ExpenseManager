@@ -17,6 +17,7 @@ app.use("/signup", express.static(path.join(__dirname, "public/signup.html")));
 app.use("/home", express.static(path.join(__dirname, "public/home.html")));
 app.use("/profile", express.static(path.join(__dirname, "public/profile.html")));
 app.use("/password", express.static(path.join(__dirname, "public/password.html")));
+app.use("/chart", express.static(path.join(__dirname, "public/chart.html")));
 
 
 const userRoute = require("./routes/userRoute");
