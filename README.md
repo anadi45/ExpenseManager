@@ -18,7 +18,7 @@ NodeJS server is used as backend and MongoDB for database .
 ![](https://github.com/anadi45/ExpenseManager/blob/master/preview/1.gif)
 
 ## PART-2
-![](https://github.com/anadi45/ExpenseManager/blob/masterpreview/2.gif)
+![](https://github.com/anadi45/ExpenseManager/blob/master/preview/2.gif)
 
 ## PART-3
 ![](https://github.com/anadi45/ExpenseManager/blob/master/preview/3.gif)
