@@ -15,13 +15,13 @@ NodeJS server is used as backend and MongoDB for database .
 # QUICK WALKTHROUGH
 
 ## PART-1
-![](https://github.com/anadi45/ExpenseManager/blob/main/preview/1.gif)
+![](https://github.com/anadi45/ExpenseManager/blob/master/preview/1.gif)
 
 ## PART-2
-![](https://github.com/anadi45/ExpenseManager/blob/main/preview/2.gif)
+![](https://github.com/anadi45/ExpenseManager/blob/masterpreview/2.gif)
 
 ## PART-3
-![](https://github.com/anadi45/ExpenseManager/blob/main/preview/3.gif)
+![](https://github.com/anadi45/ExpenseManager/blob/master/preview/3.gif)
 
 
 # TECHSTACK
