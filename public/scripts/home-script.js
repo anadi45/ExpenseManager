@@ -181,7 +181,7 @@ const logout = async() => {
 
     if (loggedOut.status == 200) {
         localStorage.clear();
-        window.location.href = "https://anadi45-expense-manager.herokuapp.com";
+        window.location.href = "https://ranjeetbaraik-expense-manager.onrender.com";
     }
 }
 

@@ -26,7 +26,7 @@ loginButton.addEventListener("click", async() => {
     if (loggedIn.status === 400) {
         modal.style.display = "block";
     } else if (loggedIn.status === 201) {
-        window.location.href = "http://anadi45-expense-manager.herokuapp.com/home";
+        window.location.href = "https://ranjeetbaraik-expense-manager.onrender.com/home";
     }
 });
 

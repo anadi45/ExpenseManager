@@ -19,7 +19,7 @@ submitButton.addEventListener("click", async() => {
 });
 
 modalButton.addEventListener("click", () => {
-    window.location.href = "http://anadi45-expense-manager.herokuapp.com/login"
+    window.location.href = "https://ranjeetbaraik-expense-manager.onrender.com/login"
 });
 
 closeModal.onclick = function() {
