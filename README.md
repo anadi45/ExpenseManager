@@ -6,7 +6,7 @@ Navigation Bar has been added for ease of navigation between pages along with so
 <br>
 <br>
 The project has been deployed on Heroku .<br>
-You can visit the deployed website here - <u>https://anadi45-expense-manager.herokuapp.com</u> <br>
+You can visit the deployed website here - <u>https://ranjeetbaraik-expense-manager.onrender.com</u> <br>
 
 Frontend is build with HTML, CSS & Javascript along with Bootstrap CSS.<br>
 NodeJS server is used as backend and MongoDB for database . 
