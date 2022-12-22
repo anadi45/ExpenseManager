@@ -5,7 +5,7 @@ New password is mailed in case a user forgets password. Name and password can be
 Navigation Bar has been added for ease of navigation between pages along with source code hyperlink in the footer section.
 <br>
 <br>
-The project has been deployed on Heroku .<br>
+The project has been deployed on Render .<br>
 You can visit the deployed website here - <u>https://ranjeetbaraik-expense-manager.onrender.com</u> <br>
 
 Frontend is build with HTML, CSS & Javascript along with Bootstrap CSS.<br>
